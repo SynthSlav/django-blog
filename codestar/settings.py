@@ -12,8 +12,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
+import dj_database_url # Ensure the environment variable is set for DATABASE_URL
 
+# Check if env.py exists and import it to set environment variables
+# This is useful for local development to avoid hardcoding sensitive information.
 if os.path.isfile('env.py'):
     import env
 
@@ -25,8 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-nj)-&nwf+a^7vc#zqrso)34oems0dpx^ghmuzk_s6(2ot90gs3'
+# SECRET_KEY = 'django-insecure-nj)-&nwf+a^7vc#zqrso)34oems0dpx^ghmuzk_s6(2ot90gs3'
 
+SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -86,6 +89,7 @@ WSGI_APPLICATION = 'codestar.wsgi.application'
 #     }
 # }
 
+# Use dj_database_url to parse the DATABASE_URL environment variable
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
