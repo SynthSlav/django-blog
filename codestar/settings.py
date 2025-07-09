@@ -32,7 +32,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [".herokuapp.com", "127.0.0.1"]
 
@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     "allauth",  # Add django-allauth for authentication
     "allauth.account",  # Add django-allauth account management
     "allauth.socialaccount",  # Add django-allauth social account management
+    "crispy_forms",  # Add crispy-forms for better form rendering
+    "crispy_bootstrap5",  # Add crispy-bootstrap5 for Bootstrap 5 support
     "django_summernote",  # Add django-summernote for rich text editing
     "blog",
     "about",
@@ -58,6 +60,9 @@ INSTALLED_APPS = [
 SITE_ID = 1  # Required for django-allauth
 LOGIN_REDIRECT_URL = "/"  # Redirect to home after login
 LOGOUT_REDIRECT_URL = "/"  # Redirect to home after logout
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"  # Use Bootstrap 5 for crispy-forms
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
