@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_summernote",  # Add django-summernote for rich text editing
     "blog",
+    "about",
 ]
 
 MIDDLEWARE = [
