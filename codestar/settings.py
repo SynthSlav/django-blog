@@ -32,7 +32,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [".herokuapp.com", "127.0.0.1"]
 
@@ -46,10 +46,18 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",  # Required for django-allauth
+    "allauth",  # Add django-allauth for authentication
+    "allauth.account",  # Add django-allauth account management
+    "allauth.socialaccount",  # Add django-allauth social account management
     "django_summernote",  # Add django-summernote for rich text editing
     "blog",
     "about",
 ]
+
+SITE_ID = 1  # Required for django-allauth
+LOGIN_REDIRECT_URL = "/"  # Redirect to home after login
+LOGOUT_REDIRECT_URL = "/"  # Redirect to home after logout
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -60,6 +68,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",  # Add django-allauth middleware
 ]
 
 ROOT_URLCONF = "codestar.urls"
@@ -116,6 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+ACCOUNT_EMAIL_VERIFICATION = "none"  # Optional email verification
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
