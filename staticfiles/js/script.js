@@ -1,1 +1,0 @@
-console.log("Life, the universe, and everything is 42.");
