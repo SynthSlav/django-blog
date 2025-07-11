@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "cloudinary_storage",  # Add cloudinary storage for media files
     "django.contrib.sites",  # Required for django-allauth
     "allauth",  # Add django-allauth for authentication
     "allauth.account",  # Add django-allauth account management
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     "crispy_forms",  # Add crispy-forms for better form rendering
     "crispy_bootstrap5",  # Add crispy-bootstrap5 for Bootstrap 5 support
     "django_summernote",  # Add django-summernote for rich text editing
+    "cloudinary",  # Add cloudinary for image management
     "blog",
     "about",
 ]
